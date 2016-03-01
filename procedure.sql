@@ -1,0 +1,1 @@
+create procedure totalcost(in checkid int)  begin  declare total float default 0;  declare cc float default 0; declare cost_cur cursor for select cost from orders where productid=checkid; open cost_cur; loop  fetch from cost_cur into cc;set total = cc+total; update display set total_sell=total where id=0; select total_sell from display; end loop; close cost_cur; end;//
